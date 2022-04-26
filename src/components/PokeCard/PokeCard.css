@@ -1,10 +1,7 @@
 .pokemoncard {
-    width: 200px;
-    height: 200px;
     flex-direction: column;
-    justify-content: flex-start;
+    justify-content: center;
     text-align: center;
-    margin-bottom: 30px;
     border: 3px black solid;
     height: 250px;
     width: 380px;

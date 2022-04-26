@@ -1,6 +1,8 @@
 import { useState, useEffect } from 'react'
-import { fetchPokemon } from '../../services/pokemon'
+import { fetchPokemon, fetchSearchedPokemon } from '../../services/pokemon'
 import PokeCard from '../../components/PokeCard/PokeCard'
+import SearchBar from '../../components/controls/SearchBar/SearchBar'
+import style from  './Main.css'
 
 export default function Main() {
     const [pokemon, setPokemon] = useState([]);
@@ -20,17 +22,24 @@ export default function Main() {
       setError(e.message)}
     }, []);
 
+    const searchPokemon = async () => {
+        const searchData = await fetchSearchedPokemon(search);
+        setPokemon(searchData);
+        setSearch('');
+    };
+
   if (loading) return <h1>Loading...</h1>
 
   return (
-    <div className='main'>
+    <div className={style.main}>
         {error && <p>{error}</p>}
-        <div className='pokemon-list'>
-            {pokemon.map((each) => {
+        <SearchBar query={search} setQuery={setSearch} callBack={searchPokemon} />
+        <ul className={style.pokemonlist}>
+            {pokemon.map((each) => (
                 // using curlies makes an explicit return
-               return <PokeCard key={each.id} {...each} />
-            })}
-        </div>
+                   <PokeCard key={each.id} {...each} /> 
+            ))}
+        </ul>
     </div>
   )
 }
