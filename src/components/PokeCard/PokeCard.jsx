@@ -1,7 +1,13 @@
 import React from 'react'
 
-export default function PokeCard() {
+export default function PokeCard({ url_image, pokemon, id, type_1, type_2 }) {
   return (
-    <div>PokeCard</div>
-  )
+    <div key={ id } className='pokemon-card'>
+       <img alt='name' width="72" height="54" src={url_image} />
+       <h3>{pokemon}</h3>
+       <p>
+         (type: {type_1}, {type_2})
+       </p>
+    </div>
+  );
 }

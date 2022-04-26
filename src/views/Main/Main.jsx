@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react'
 import { fetchPokemon } from '../../services/pokemon'
+import PokeCard from '../../components/PokeCard/PokeCard'
 
 export default function Main() {
     const [pokemon, setPokemon] = useState([]);
@@ -10,12 +11,21 @@ export default function Main() {
       const fetchData = async () => {
           const allPokemon = await fetchPokemon();
           setPokemon(allPokemon);
+          setLoading(false);
       }
       fetchData();
     }, []);
 
+  if (loading) return <h1>Loading...</h1>
 
   return (
-    <div>Main</div>
+    <div className='main'>
+        <div className='pokemon-list'>
+            {pokemon.map((each) => {
+                // using curlies makes an explicit return
+               return <PokeCard key={each.id} {...each} />
+            })}
+        </div>
+    </div>
   )
 }
