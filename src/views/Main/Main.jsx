@@ -23,8 +23,10 @@ export default function Main() {
     }, []);
 
     const searchPokemon = async () => {
+        setLoading(true);
         const searchData = await fetchSearchedPokemon(search);
         setPokemon(searchData);
+        setLoading(false);
         setSearch('');
     };
 
