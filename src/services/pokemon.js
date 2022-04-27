@@ -4,6 +4,7 @@ export async function fetchPokemon() {
     return data.results;
 }
 
+
 export async function fetchSearchedPokemon(search) {
     const params = new URLSearchParams();
     if (search) {
