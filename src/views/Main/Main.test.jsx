@@ -20,7 +20,6 @@ describe('Main', () => {
     const searchButton = screen.getByRole('button', { name: /search/i });
     userEvent.click(searchButton);
     await screen.findByText(/loading/i);
-    screen.debug
 
     return waitFor(() => {
         const query = screen.getAllByText(/charizard/i);
