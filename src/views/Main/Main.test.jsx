@@ -5,9 +5,7 @@ import Main from './Main'
 describe('Main', () => {
   it('should display a list of pokemon and have the option to search pokemon', async () => {
     render(
-        <>
-        <Main />
-        </>
+        <Main /> 
     );
     await screen.findByText(/loading/i);
 

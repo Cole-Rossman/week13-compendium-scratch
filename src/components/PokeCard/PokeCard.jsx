@@ -4,11 +4,11 @@ import style from './PokeCard.css'
 export default function PokeCard({ url_image, pokemon, id, type_1, type_2 }) {
   return (
     <div key={ id } className={style.pokemoncard}>
-       <img alt='name' width="72" height="54" src={url_image} />
+       <img alt='pokemonimg' width="72" height="54" src={url_image} />
        <h3>{pokemon}</h3>
-       <p>
+       <h5>
          (type: {type_1}, {type_2})
-       </p>
+       </h5>
     </div>
   );
 }

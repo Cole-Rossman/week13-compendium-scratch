@@ -14,6 +14,7 @@ export default function Main() {
     try {
       const fetchData = async () => {
           const allPokemon = await fetchPokemon();
+          console.log(allPokemon);
           setPokemon(allPokemon);
           setLoading(false);
       }
